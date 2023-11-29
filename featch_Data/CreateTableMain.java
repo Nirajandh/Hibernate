@@ -13,22 +13,16 @@ public class CreateTableMain {
        // for connection
 		SessionFactory factory=new Configuration().configure().buildSessionFactory();
 		
-		//System.out.println(sec); to check weather our connection is successfull or not
+	
 		
-//		CreateTable obj=new CreateTable();		
-//		obj.setEid(1);
-//		obj.setEname("niranjan");
-//		obj.setCity("pune");
+
 		
 		Session session = factory.openSession();
-		//CreateTable 
+	
+	    CreateTable obj=(CreateTable)session.get(CreateTable.class,1);  //create object of the table class to featch data
 		
-		//Transaction tx=session.beginTransaction();
-	    CreateTable obj=(CreateTable)session.get(CreateTable.class,1);
+		System.out.println(obj.getCity());  // to avoid .getcity() override the string method from the create table class
 		
-		System.out.println(obj.getCity());
-		//session.save(obj);
-		//tx.commit();
 		session.close();
 		factory.close();
 		}
